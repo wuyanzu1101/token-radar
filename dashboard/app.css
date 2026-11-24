@@ -1,6 +1,8 @@
 /* Token Radar's theme: warm paper, deep navy ink, one amber signal.
-   Five palette values, two radii and two families are the whole style;
-   everything else is spacing, a hairline and a type step. */
+   The palette is five values, two radii, two families and a spacing scale;
+   everything else is a hairline, a type step and room to breathe. */
+
+/* --- Tokens --- */
 :root {
   --canvas: #f6f3ec;
   --surface: #ffffff;
@@ -25,6 +27,7 @@
   --step-7: 48px;
 }
 
+/* --- Base --- */
 * { box-sizing: border-box; }
 html { color-scheme: light; }
 body {
@@ -42,35 +45,87 @@ p { margin: 0; }
 button, input, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
 a { color: var(--accent); }
-.skip {
-  position: absolute; left: -9999px; top: 0; padding: var(--step-2) var(--step-4);
-  background: var(--surface); border: 1px solid var(--border); z-index: 20;
-}
-.skip:focus { left: var(--step-4); top: var(--step-4); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+/* The skip link stays off screen until a keyboard user tabs to it. */
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: var(--step-2) var(--step-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  z-index: 20;
+}
+.skip:focus { left: var(--step-4); top: var(--step-4); }
+
+/* --- Page shell and header --- */
 .shell { max-width: 1320px; margin: 0 auto; padding: 0 var(--step-6) var(--step-7); }
 .top {
-  background: var(--navy); color: #eef2f5; margin: 0 calc(var(--step-6) * -1);
+  background: var(--navy);
+  color: #eef2f5;
+  margin: 0 calc(var(--step-6) * -1);
   padding: var(--step-5) var(--step-6) var(--step-4);
-  display: flex; align-items: flex-start; justify-content: space-between; gap: var(--step-5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--step-5);
 }
 .brand { display: flex; align-items: center; gap: var(--step-3); }
-.mark { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(180, 83, 9, 0.25); flex: none; }
-.brand-name { font-family: var(--font-num); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: #c8d3dd; }
-.top-meta { display: flex; flex-wrap: wrap; gap: var(--step-3); justify-content: flex-end; color: #c8d3dd; font-size: 13px; }
+.mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(180, 83, 9, 0.25);
+  flex: none;
+}
+.brand-name {
+  font-family: var(--font-num);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c8d3dd;
+}
+.top-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--step-3);
+  justify-content: flex-end;
+  color: #c8d3dd;
+  font-size: 13px;
+}
 .top-meta span { white-space: nowrap; }
-.lede { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr); gap: var(--step-6); padding: var(--step-6) 0 var(--step-5); }
+
+/* --- Lede and facts --- */
+.lede {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: var(--step-6);
+  padding: var(--step-6) 0 var(--step-5);
+}
 .lede p { color: var(--muted); max-width: 62ch; margin-top: var(--step-2); }
-.facts { display: grid; gap: var(--step-2); align-content: start; border-left: 1px solid var(--border); padding-left: var(--step-5); }
+.facts {
+  display: grid;
+  gap: var(--step-2);
+  align-content: start;
+  border-left: 1px solid var(--border);
+  padding-left: var(--step-5);
+}
 .fact { display: flex; align-items: baseline; justify-content: space-between; gap: var(--step-3); }
 .fact b { font-family: var(--font-num); font-size: 15px; font-weight: 500; }
 .fact span { color: var(--muted); font-size: 13px; }
 
+/* --- Top-three spotlight --- */
 .spotlight { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--step-3); padding-bottom: var(--step-5); }
 .spot {
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-panel);
-  padding: var(--step-4); display: grid; gap: var(--step-1); position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-panel);
+  padding: var(--step-4);
+  display: grid;
+  gap: var(--step-1);
+  position: relative;
 }
 .spot:first-child { border-color: var(--accent); background: var(--accent-soft); }
 .spot .rank { font-family: var(--font-num); font-size: 12px; color: var(--accent); font-weight: 700; letter-spacing: 0.04em; }
@@ -78,12 +133,17 @@ a { color: var(--accent); }
 .spot .num { font-family: var(--font-num); font-size: 20px; font-weight: 600; }
 .spot .sub { color: var(--muted); font-size: 12px; }
 
+/* --- Filters and tabs --- */
 .controls { display: flex; flex-wrap: wrap; align-items: end; gap: var(--step-3); padding: var(--step-4) 0; border-top: 1px solid var(--border); }
 .field { display: grid; gap: var(--step-1); }
 .field label { color: var(--muted); font-size: 12px; }
 .field input, .field select {
-  min-height: 36px; padding: 0 var(--step-3); border: 1px solid var(--border); border-radius: var(--radius-control);
-  background: var(--surface); min-width: 160px;
+  min-height: 36px;
+  padding: 0 var(--step-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  min-width: 160px;
 }
 .field input { min-width: 260px; }
 .check { display: inline-flex; align-items: center; gap: var(--step-2); min-height: 36px; font-size: 13px; color: var(--muted); }
@@ -93,6 +153,49 @@ a { color: var(--accent); }
 .tabs button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
 .count { margin-left: auto; color: var(--muted); font-size: 13px; align-self: center; }
 
+/* --- Detail drawer --- */
+.detail {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(540px, 92vw);
+  z-index: 10;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  padding: var(--step-5);
+  overflow-y: auto;
+  margin: 0 0 0 auto;
+  max-height: 100%;
+}
+.detail[hidden] { display: none; }
+.detail::backdrop { background: rgba(22, 34, 46, 0.32); }
+.detail-head { display: flex; align-items: start; justify-content: space-between; gap: var(--step-4); }
+.detail-head > div { min-width: 0; }
+.detail-head .sub { overflow-wrap: anywhere; }
+.detail h2 { margin-top: var(--step-1); }
+.detail .sub { margin-top: var(--step-1); }
+.close {
+  flex: none;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0 var(--step-2);
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+}
+.detail-section { margin-top: var(--step-5); padding-top: var(--step-4); border-top: 1px solid var(--border); }
+.detail-section h3 { margin-bottom: var(--step-2); }
+.equation { display: grid; gap: var(--step-2); font-family: var(--font-num); font-size: 13px; }
+.equation div { display: flex; justify-content: space-between; gap: var(--step-3); }
+.equation span { color: var(--muted); }
+.steps { margin: 0; padding-left: var(--step-5); display: grid; gap: var(--step-3); }
+.steps li { padding-left: var(--step-1); }
+.steps b { display: block; font-weight: 500; }
+.cost { color: var(--muted); font-size: 12px; font-family: var(--font-num); }
+
+/* --- Board table --- */
 .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-panel); overflow: hidden; }
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -117,6 +220,7 @@ tbody tr[data-selected="true"] { background: var(--accent-soft); }
 .badge.live::before { background: var(--positive); }
 .badge.watch { color: var(--accent); font-weight: 600; }
 
+/* --- Model explainer, empty state and footer --- */
 .model { margin-top: var(--step-4); padding: var(--step-5); display: grid; gap: var(--step-3); }
 .formula { font-family: var(--font-num); font-size: 13px; line-height: 1.7; color: var(--muted); overflow-wrap: anywhere; }
 .foot { margin-top: var(--step-4); color: var(--muted); font-size: 12px; }
@@ -125,29 +229,7 @@ tbody tr[data-selected="true"] { background: var(--accent-soft); }
 .button { min-height: 36px; padding: 0 var(--step-4); border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--surface); }
 .button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
 
-.detail {
-  position: fixed; top: 0; right: 0; bottom: 0; width: min(540px, 92vw); z-index: 10;
-  background: var(--surface); border-left: 1px solid var(--border); padding: var(--step-5);
-  overflow-y: auto; margin: 0 0 0 auto; max-height: 100%;
-}
-.detail[hidden] { display: none; }
-.detail::backdrop { background: rgba(22, 34, 46, 0.32); }
-.detail-head { display: flex; align-items: start; justify-content: space-between; gap: var(--step-4); }
-.detail-head > div { min-width: 0; }
-.detail-head .sub { overflow-wrap: anywhere; }
-.close { flex: none; min-width: 32px; min-height: 32px; padding: 0 var(--step-2); white-space: nowrap; border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--surface); }
-.detail h2 { margin-top: var(--step-1); }
-.detail .sub { margin-top: var(--step-1); }
-.detail-section { margin-top: var(--step-5); padding-top: var(--step-4); border-top: 1px solid var(--border); }
-.detail-section h3 { margin-bottom: var(--step-2); }
-.equation { display: grid; gap: var(--step-2); font-family: var(--font-num); font-size: 13px; }
-.equation div { display: flex; justify-content: space-between; gap: var(--step-3); }
-.equation span { color: var(--muted); }
-.steps { margin: 0; padding-left: var(--step-5); display: grid; gap: var(--step-3); }
-.steps li { padding-left: var(--step-1); }
-.steps b { display: block; font-weight: 500; }
-.cost { color: var(--muted); font-size: 12px; font-family: var(--font-num); }
-
+/* --- Narrow screens and reduced motion --- */
 @media (max-width: 900px) {
   .shell { padding: 0 var(--step-4) var(--step-5); }
   .top { margin: 0 calc(var(--step-4) * -1); padding-left: var(--step-4); padding-right: var(--step-4); }

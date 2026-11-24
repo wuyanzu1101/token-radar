@@ -1,15 +1,22 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Token Radar: pre-token protocols ranked by implied value</title>
-<link rel="stylesheet" href="app.css">
-</head>
-<body>
-<a class="skip" href="#board">Skip to the board</a>
-<main id="board" tabindex="-1" aria-busy="true"></main>
-<script src="../data.js"></script>
-<script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Token Radar: pre-token protocols ranked by implied value</title>
+    <!-- One stylesheet and two scripts, no network: data.js carries the whole board. -->
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <!-- Keyboard users jump straight to the board. -->
+    <a class="skip" href="#board">Skip to the board</a>
+    <!-- app.js renders the board, the filters and the detail drawer into this element. -->
+    <main id="board" tabindex="-1" aria-busy="true"></main>
+    <noscript>
+      <p>Token Radar needs JavaScript: the board is rendered in this page from its own data.</p>
+    </noscript>
+    <!-- data.js first: it defines window.RADAR, which app.js reads. -->
+    <script src="../data.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
